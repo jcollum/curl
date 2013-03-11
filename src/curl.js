@@ -953,6 +953,10 @@
 
 						// if !args, nothing was added to the argsNet
 						if (!args || args.ex) {
+							// try to get the module id
+							if (def.id !== null && typeof def.id !== "undefined"){
+					                  args.ex += "; module: " + def.id;
+					                }
 							def.reject(new Error(((args && args.ex) || 'define() missing or duplicated: ' + def.url)));
 						}
 						else {
